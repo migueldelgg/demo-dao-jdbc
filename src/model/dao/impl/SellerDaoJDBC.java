@@ -90,7 +90,7 @@ public class SellerDaoJDBC implements SellerDao {
     public void deleteById(Integer id) {
         PreparedStatement st = null;
 
-        try{
+        try {
             st = conn.prepareStatement("DELETE FROM seller WHERE Id = ?");
 
             st.setInt(1, id);
@@ -100,11 +100,9 @@ public class SellerDaoJDBC implements SellerDao {
             if (rows == 0) {
                 throw new DbException("This id does not exist");
             }
-        }
-        catch (SQLException e) {
+        } catch (SQLException e) {
             throw new DbException(e.getMessage());
-        }
-        finally {
+        } finally {
             DB.closeStatement(st);
         }
 
@@ -175,6 +173,7 @@ public class SellerDaoJDBC implements SellerDao {
             Map<Integer, Department> map = new HashMap<>();
 
             while (rs.next()) {
+
                 Department dep = map.get(rs.getInt("DepartmentId"));
 
                 if (dep == null) {
@@ -184,7 +183,6 @@ public class SellerDaoJDBC implements SellerDao {
 
                 Seller obj = instantiateSeller(rs, dep);
                 list.add(obj);
-
             }
             return list;
         } catch (SQLException e) {
