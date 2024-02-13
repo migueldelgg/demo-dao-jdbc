@@ -20,7 +20,7 @@ public class Program2 {
         Department department = departmentDao.findById(responseId);
         System.out.println(department);
 
-        System.out.println("\n=== TEST 2: seller findAll ===");
+        System.out.println("\n=== TEST 2: department findAll ===");
         List<Department> list;
         list = departmentDao.findAll();
         for (Department obj : list) {
@@ -38,6 +38,10 @@ public class Program2 {
         departmentDao.update(department);
         System.out.println("Update completed!");
 
-
+        System.out.println("\n=== TEST 5: department update ===");
+        System.out.print("Enter id for delete test: ");
+        int id = sc.nextInt();
+        departmentDao.deleteById(id);
+        System.out.println("Delete completed");
     }
 }
