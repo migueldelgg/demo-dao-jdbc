@@ -4,7 +4,6 @@ import model.dao.DaoFactory;
 import model.dao.DepartmentDao;
 import model.entities.Department;
 
-import java.util.ArrayList;
 import java.util.List;
 import java.util.Scanner;
 
@@ -22,11 +21,16 @@ public class Program2 {
         System.out.println(department);
 
         System.out.println("\n=== TEST 2: seller findAll ===");
-        List<Department> list = new ArrayList<>();
+        List<Department> list;
         list = departmentDao.findAll();
         for (Department obj : list) {
             System.out.println(obj);
         }
+
+        System.out.println("\n=== TEST 4: deparment insert ===");
+        Department newDepartment = new Department(null, "D3");
+        departmentDao.insert(newDepartment);
+        System.out.println("Inserted! New id = " + newDepartment.getId());
 
 
     }
